@@ -72,8 +72,11 @@ JOIN order_details od ON o.OrderID = od.OrderID
 GROUP BY c.CompanyName
 ORDER BY TotalSales DESC
 LIMIT 5;
+```
 
 2. Monthly Sales Trend
+
+```sql
 
 SELECT DATE_TRUNC('month', o.OrderDate) AS SalesMonth,
        SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS MonthlySales
@@ -82,8 +85,11 @@ JOIN order_details od ON o.OrderID = od.OrderID
 GROUP BY SalesMonth
 ORDER BY SalesMonth;
 
+```
 
 3. Inventory Reorder Alert
+
+```sql
 
 SELECT ProductName, UnitsInStock, UnitsOnOrder, ReorderLevel,
        CASE
@@ -93,21 +99,20 @@ SELECT ProductName, UnitsInStock, UnitsOnOrder, ReorderLevel,
 FROM products
 ORDER BY InventoryStatus DESC;
 
+```
 
  4. Employee Supervisor Structure
+```sql
 
 SELECT e.EmployeeID, e.FirstName || ' ' || e.LastName AS Employee,
        m.FirstName || ' ' || m.LastName AS Manager
 FROM employees e
 LEFT JOIN employees m ON e.ReportsTo = m.EmployeeID;
 
+```
 
 
-
-
-
-
-🛠️ Tools Used
+# Tools 
 PostgreSQL / MySQL (Northwind-compatible schema)
 
 SQL (Standard ANSI)
