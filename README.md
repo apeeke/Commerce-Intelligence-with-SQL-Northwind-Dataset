@@ -48,23 +48,12 @@ Using well-structured queries and reporting techniques, this project showcases r
 
 
 
-## 🔗 Entity Relationship Overview
+## 🔗 Relationship overview
 
 
+## 🧱 Entity Relationship Diagram
 
-[customers]──<orders>──<order_details>──┐
-│ │ │
-│ └──[products]──┬──┘
-│ │
-└─<customer_customer_demo> │
-│ │
-[customer_demographics] [suppliers]
-[categories]
-
-[orders]──[employees] [shippers]
-│ │ (via ShipVia)
-└> [employee_territories] ── [territories] ── [region]
-
+![Northwind ER](northwind-er-diagram.png)
 
 
 
@@ -115,12 +104,15 @@ LEFT JOIN employees m ON e.ReportsTo = m.EmployeeID;
 
 
 
+
+
+
 🛠️ Tools Used
 PostgreSQL / MySQL (Northwind-compatible schema)
 
 SQL (Standard ANSI)
 
-GitHub (for hosting and documentation)
+GitHub (for hosting and documentation) 
 
 
 
