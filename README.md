@@ -67,9 +67,6 @@ Using well-structured queries and reporting techniques, this project showcases r
 
 
 
-- `<` indicates one-to-many relationships.
-- Many-to-many relationships are joined via intermediate tables like `employee_territories` and `customer_customer_demo`.
-
 
 
 ## 🧪 Sample SQL Queries
@@ -87,8 +84,7 @@ GROUP BY c.CompanyName
 ORDER BY TotalSales DESC
 LIMIT 5;
 
-### 🔹 2. Monthly Sales Trend
-```sql
+2. Monthly Sales Trend
 
 SELECT DATE_TRUNC('month', o.OrderDate) AS SalesMonth,
        SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS MonthlySales
@@ -98,7 +94,7 @@ GROUP BY SalesMonth
 ORDER BY SalesMonth;
 
 
-###🔹 3. Inventory Reorder Alert
+3. Inventory Reorder Alert
 
 SELECT ProductName, UnitsInStock, UnitsOnOrder, ReorderLevel,
        CASE
@@ -109,24 +105,14 @@ FROM products
 ORDER BY InventoryStatus DESC;
 
 
-###🔹 4. Employee Supervisor Structure
+ 4. Employee Supervisor Structure
 
 SELECT e.EmployeeID, e.FirstName || ' ' || e.LastName AS Employee,
        m.FirstName || ' ' || m.LastName AS Manager
 FROM employees e
 LEFT JOIN employees m ON e.ReportsTo = m.EmployeeID;
 
-🗂️ Project Structure
 
-commerce-intelligence-with-sql-northwind/
-├── README.md                ← Project documentation and overview
-├── sql/
-│   ├── top_customers.sql
-│   ├── monthly_sales.sql
-│   ├── inventory_status.sql
-│   └── employee_hierarchy.sql
-├── diagrams/
-│   └── northwind-erd.png    )
 
 
 🛠️ Tools Used
