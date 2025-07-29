@@ -68,7 +68,7 @@ SELECT c.CompanyName,
        ROUND(SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)), 2) AS TotalSales
 FROM customers c
 JOIN orders o ON c.CustomerID = o.CustomerID
-JOIN order_details od ON o.OrderID = od.OrderID
+JOIN `order details` od ON o.OrderID = od.OrderID
 GROUP BY c.CompanyName
 ORDER BY TotalSales DESC
 LIMIT 5;
@@ -78,11 +78,12 @@ LIMIT 5;
 
 ```sql
 
-SELECT DATE_TRUNC('month', o.OrderDate) AS SalesMonth,
-       SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS MonthlySales
-FROM orders o
-JOIN order_details od ON o.OrderID = od.OrderID
-GROUP BY SalesMonth
+SELECT 
+    FORMAT(o.OrderDate, 'yyyy-MM') AS SalesMonth,
+    SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)) AS MonthlySales
+FROM Orders o
+JOIN `Order Details` od ON o.OrderID = od.OrderID
+GROUP BY FORMAT(o.OrderDate, 'yyyy-MM')
 ORDER BY SalesMonth;
 
 ```
